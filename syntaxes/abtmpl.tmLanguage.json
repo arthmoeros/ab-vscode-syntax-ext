@@ -1,0 +1,85 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Artifact Builder Template",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#sub-template"
+		},
+		{
+			"include": "#mapped-expression"
+		},
+		{
+			"include": "#iterated-expression"
+		},
+		{
+			"include": "#iteration-definition"
+		}
+	],
+	"repository": {
+		"strings": {
+			"patterns": [{
+				"name":"string.quoted.abtmpl",
+				"match": "(\"|')(.*?)(\"|')",
+				"captures": {
+					"2" : { "patterns": [
+						{
+							"include": "#mapped-expression"
+						}
+					]}
+				}
+			}]
+		},
+		"sub-template": {
+			"patterns": [{
+				"name":"markup.bold.abtmpl",
+				"match": "(::)*([a-zA-Z0-9_./]*?)*(::)"
+			}]
+		},
+		"mapped-expression": {
+			"patterns": [{
+				"name":"keyword.control.abtmpl",
+				"match": "(&{)(\\*)? *(\\([a-zA-Z0-9_,]*?\\))? *([a-zA-Z0-9_.]*?) *(\\?)? *(\"[a-zA-Z0-9_. ]*?\")? *('[a-zA-Z0-9_. ]*?')? *(:)? *(\"[a-zA-Z0-9_. ]*?\")? *('[a-zA-Z0-9_. ]*?')? *(})",
+				"captures": {
+					"2" : { "name" : "variable.css"},
+					"3" : { "name" : "string.regexp"},
+					"4" : { "name" : "entity.other.attribute-name.scss"},
+					"5" : { "name" : "invalid"},
+					"6" : { "name" : "variable.css"},
+					"7" : { "name" : "variable.css"},
+					"8" : { "name" : "invalid"},
+					"9" : { "name" : "variable.css"},
+					"10" : { "name" : "variable.css"}
+				}
+			}]
+		},
+		"iterated-expression": {
+			"patterns": [{
+				"name":"string.regexp.abtmpl",
+				"match": "(&{#)([a-zA-Z0-9_.]*?)(})",
+				"captures": {
+					"2" : { "name" : "variable.css"}
+				}
+			}]
+		},
+		"iteration-definition": {
+			"patterns": [{
+				"name":"keyword.control.abtmpl",
+				"match": "(#)(iteration)(\\()([a-zA-Z0-9_.]*?)(=)([a-zA-Z0-9_.]*?)(\\))\n?(\r\n)?",
+				"captures": {
+					"2" : { "name" : "string.regexp"},
+					"3" : { "name" : "keyword.control.abtmpl"},
+					"4" : { "name" : "entity.other.attribute-name.scss"},
+					"5" : { "name" : "invalid"},
+					"6" : { "name" : "entity.other.attribute-name.scss"}
+				}
+			}]
+		}
+	},
+	"scopeName": "source.abtmpl"
+}
