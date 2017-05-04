@@ -1,7 +1,7 @@
 {
-    "name": "artifact-builder-template",
-    "displayName": "Artifact Builder Template",
-    "description": "Template Format for Artifact Builder's artifact generation",
+    "name": "artifacter-template",
+    "displayName": "Artifacter Template",
+    "description": "Template Format for Artifacter's atmpl files",
     "version": "0.0.1",
     "publisher": "arthmoeros",
     "engines": {
@@ -12,15 +12,15 @@
     ],
     "contributes": {
         "languages": [{
-            "id": "abtmpl",
-            "aliases": ["Artifact Builder Template", "abtmpl"],
-            "extensions": [".abtmpl"],
+            "id": "atmpl",
+            "aliases": ["Artifacter Template", "atmpl"],
+            "extensions": [".atmpl"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
-            "language": "abtmpl",
-            "scopeName": "source.abtmpl",
-            "path": "./syntaxes/abtmpl.tmLanguage.json"
+            "language": "atmpl",
+            "scopeName": "source.atmpl",
+            "path": "./syntaxes/atmpl.tmLanguage.json"
         }]
     }
 }

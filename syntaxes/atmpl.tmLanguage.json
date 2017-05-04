@@ -1,6 +1,6 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Artifact Builder Template",
+	"name": "Artifacter Template",
 	"patterns": [
 		{
 			"include": "#keywords"
@@ -18,13 +18,13 @@
 			"include": "#iterated-expression"
 		},
 		{
-			"include": "#iteration-definition"
+			"include": "#declared-iteration"
 		}
 	],
 	"repository": {
 		"strings": {
 			"patterns": [{
-				"name":"string.quoted.abtmpl",
+				"name":"string.quoted.atmpl",
 				"match": "(\"|')(.*?)(\"|')",
 				"captures": {
 					"2" : { "patterns": [
@@ -37,13 +37,13 @@
 		},
 		"sub-template": {
 			"patterns": [{
-				"name":"markup.bold.abtmpl",
+				"name":"markup.bold.atmpl",
 				"match": "(::)*([a-zA-Z0-9_./]*?)*(::)"
 			}]
 		},
 		"mapped-expression": {
 			"patterns": [{
-				"name":"keyword.control.abtmpl",
+				"name":"keyword.control.atmpl",
 				"match": "(&{)(\\*)? *(\\([a-zA-Z0-9_,]*?\\))? *([a-zA-Z0-9_.]*?) *(\\?)? *(\"[a-zA-Z0-9_. ]*?\")? *('[a-zA-Z0-9_. ]*?')? *(:)? *(\"[a-zA-Z0-9_. ]*?\")? *('[a-zA-Z0-9_. ]*?')? *(})",
 				"captures": {
 					"2" : { "name" : "variable.css"},
@@ -60,20 +60,20 @@
 		},
 		"iterated-expression": {
 			"patterns": [{
-				"name":"string.regexp.abtmpl",
+				"name":"string.regexp.atmpl",
 				"match": "(&{#)([a-zA-Z0-9_.]*?)(})",
 				"captures": {
 					"2" : { "name" : "variable.css"}
 				}
 			}]
 		},
-		"iteration-definition": {
+		"declared-iteration": {
 			"patterns": [{
-				"name":"keyword.control.abtmpl",
+				"name":"keyword.control.atmpl",
 				"match": "(#)(iteration)(\\()([a-zA-Z0-9_.]*?)(=)([a-zA-Z0-9_.]*?)(\\))\n?(\r\n)?",
 				"captures": {
 					"2" : { "name" : "string.regexp"},
-					"3" : { "name" : "keyword.control.abtmpl"},
+					"3" : { "name" : "keyword.control.atmpl"},
 					"4" : { "name" : "entity.other.attribute-name.scss"},
 					"5" : { "name" : "invalid"},
 					"6" : { "name" : "entity.other.attribute-name.scss"}
@@ -81,5 +81,5 @@
 			}]
 		}
 	},
-	"scopeName": "source.abtmpl"
+	"scopeName": "source.atmpl"
 }

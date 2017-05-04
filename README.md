@@ -1,6 +1,6 @@
-# @ab/vscode-syntax README
+# @artifacter/vscode-syntax README
 
-This is the README for your extension "@ab/vscode-syntax". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "@artifacter/vscode-syntax". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
