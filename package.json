@@ -2,7 +2,7 @@
     "name": "artifacter-template",
     "displayName": "Artifacter Template",
     "description": "Template Format for Artifacter's atmpl files",
-    "version": "0.0.1",
+    "version": "1.0.4",
     "publisher": "arthmoeros",
     "engines": {
         "vscode": "^1.11.0"
@@ -11,16 +11,29 @@
         "Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "atmpl",
-            "aliases": ["Artifacter Template", "atmpl"],
-            "extensions": [".atmpl"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "atmpl",
-            "scopeName": "source.atmpl",
-            "path": "./syntaxes/atmpl.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "atmpl",
+                "aliases": [
+                    "Artifacter Template",
+                    "atmpl"
+                ],
+                "extensions": [
+                    ".atmpl"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "atmpl",
+                "scopeName": "source.atmpl",
+                "path": "./syntaxes/atmpl.tmLanguage.json"
+            }
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/arthmoeros/artifacter-vscode-syntax-ext"
     }
 }
