@@ -1,4 +1,4 @@
-# @artifacter/vscode-syntax-ext
+# ![artifacter-logo](https://raw.githubusercontent.com/arthmoeros/artifacter-ui/master/src/rsz_artifacter-logo.png)@artifacter/vscode-syntax-ext
 
 This little extension colors "atmpl" files with Artifacter Template syntax
 
