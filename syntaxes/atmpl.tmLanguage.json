@@ -18,67 +18,131 @@
 			"include": "#iterated-expression"
 		},
 		{
+			"include": "#parameterized-expression"
+		},
+		{
 			"include": "#declared-iteration"
 		}
 	],
 	"repository": {
 		"strings": {
-			"patterns": [{
-				"name":"string.quoted.atmpl",
-				"match": "(\"|')(.*?)(\"|')",
-				"captures": {
-					"2" : { "patterns": [
-						{
-							"include": "#mapped-expression"
+			"patterns": [
+				{
+					"name": "string.quoted.atmpl",
+					"match": "(\"|')(.*?)(\"|')",
+					"captures": {
+						"2": {
+							"patterns": [
+								{
+									"include": "#mapped-expression"
+								},
+								{
+									"include": "#iterated-expression"
+								},
+								{
+									"include": "#parameterized-expression"
+								}
+							]
 						}
-					]}
+					}
 				}
-			}]
+			]
 		},
 		"sub-template": {
-			"patterns": [{
-				"name":"markup.bold.atmpl",
-				"match": "(::)*([a-zA-Z0-9_./]*?)*(::)"
-			}]
+			"patterns": [
+				{
+					"name": "markup.bold.atmpl",
+					"match": "(::)*([a-zA-Z0-9_./]*?)*(::)"
+				}
+			]
 		},
 		"mapped-expression": {
-			"patterns": [{
-				"name":"keyword.control.atmpl",
-				"match": "(&{)(\\*)? *(\\([a-zA-Z0-9_,]*?\\))? *([a-zA-Z0-9_.]*?) *(\\?)? *(\"[a-zA-Z0-9_. ]*?\")? *('[a-zA-Z0-9_. ]*?')? *(:)? *(\"[a-zA-Z0-9_. ]*?\")? *('[a-zA-Z0-9_. ]*?')? *(})",
-				"captures": {
-					"2" : { "name" : "variable.css"},
-					"3" : { "name" : "string.regexp"},
-					"4" : { "name" : "entity.other.attribute-name.scss"},
-					"5" : { "name" : "invalid"},
-					"6" : { "name" : "variable.css"},
-					"7" : { "name" : "variable.css"},
-					"8" : { "name" : "invalid"},
-					"9" : { "name" : "variable.css"},
-					"10" : { "name" : "variable.css"}
+			"patterns": [
+				{
+					"name": "keyword.control.atmpl",
+					"match": "(&{)(\\*)? *(\\([a-zA-Z0-9_,]*?\\))? *([a-zA-Z0-9_.]*?) *(\\?)? *(\"[a-zA-Z0-9_. ]*?\")? *('[a-zA-Z0-9_. ]*?')? *(:)? *(\"[a-zA-Z0-9_. ]*?\")? *('[a-zA-Z0-9_. ]*?')? *(})",
+					"captures": {
+						"2": {
+							"name": "variable.css"
+						},
+						"3": {
+							"name": "string.regexp"
+						},
+						"4": {
+							"name": "entity.other.attribute-name.scss"
+						},
+						"5": {
+							"name": "invalid"
+						},
+						"6": {
+							"name": "variable.css"
+						},
+						"7": {
+							"name": "variable.css"
+						},
+						"8": {
+							"name": "invalid"
+						},
+						"9": {
+							"name": "variable.css"
+						},
+						"10": {
+							"name": "variable.css"
+						}
+					}
 				}
-			}]
+			]
 		},
 		"iterated-expression": {
-			"patterns": [{
-				"name":"string.regexp.atmpl",
-				"match": "(&{#)([a-zA-Z0-9_.]*?)(})",
-				"captures": {
-					"2" : { "name" : "variable.css"}
+			"patterns": [
+				{
+					"name": "string.regexp.atmpl",
+					"match": "(&{#)([a-zA-Z0-9_.]*?)(})",
+					"captures": {
+						"2": {
+							"name": "variable.css"
+						}
+					}
 				}
-			}]
+			]
 		},
 		"declared-iteration": {
-			"patterns": [{
-				"name":"keyword.control.atmpl",
-				"match": "(#)(iteration)(\\()([a-zA-Z0-9_.]*?)(=)([a-zA-Z0-9_.]*?)(\\))\n?(\r\n)?",
-				"captures": {
-					"2" : { "name" : "string.regexp"},
-					"3" : { "name" : "keyword.control.atmpl"},
-					"4" : { "name" : "entity.other.attribute-name.scss"},
-					"5" : { "name" : "invalid"},
-					"6" : { "name" : "entity.other.attribute-name.scss"}
+			"patterns": [
+				{
+					"name": "keyword.control.atmpl",
+					"match": "(#)(iteration)(\\()([a-zA-Z0-9_.]*?)(=)([a-zA-Z0-9_.]*?)(\\))\n?(\r\n)?",
+					"captures": {
+						"2": {
+							"name": "string.regexp"
+						},
+						"3": {
+							"name": "keyword.control.atmpl"
+						},
+						"4": {
+							"name": "entity.other.attribute-name.scss"
+						},
+						"5": {
+							"name": "invalid"
+						},
+						"6": {
+							"name": "entity.other.attribute-name.scss"
+						}
+					}
 				}
-			}]
+			]
+		},
+		"parameterized-expression": {
+			"patterns": [
+				{
+					"name": "string.regexp.atmpl",
+					"match": "(&{:)([a-zA-Z0-9_.]*?)(})",
+					"captures": {
+						"2": {
+							"name": "entity.other.attribute-name.scss"
+						}
+					}
+				}
+			]
 		}
 	},
 	"scopeName": "source.atmpl"
